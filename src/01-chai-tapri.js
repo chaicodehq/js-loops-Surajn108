@@ -27,5 +27,20 @@
  *   // => { totalChai: 0, totalRevenue: 0 }
  */
 export function chaiTapriRevenue(customers) {
-  // Your code here
+  // Validation: positive integer required
+  if (
+    typeof customers !== "number" ||
+    !Number.isInteger(customers) ||
+    customers <= 0
+  ) {
+    return { totalChai: 0, totalRevenue: 0 };
+  }
+
+  const totalChai = customers;
+  const adrakChai = Math.floor(customers / 3);
+  const cuttingChai = totalChai - adrakChai;
+
+  const totalRevenue = cuttingChai * 10 + adrakChai * 15;
+
+  return { totalChai, totalRevenue };
 }
